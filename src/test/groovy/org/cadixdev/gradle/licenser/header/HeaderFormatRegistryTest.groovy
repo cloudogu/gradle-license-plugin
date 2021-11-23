@@ -32,6 +32,8 @@ class HeaderFormatRegistryTest extends Specification {
         def registry = new HeaderFormatRegistry()
 
         then:
-        registry.keySet().containsAll(["java", "js", "kt", "groovy", "yml", "xml", "html"])
+        registry.keySet().containsAll(["fxml", "css", "scala", "dockerfile", "xsd", "kt", "js", "jsx", "jenkinsfile", "kts",
+                                       "xhtml", "gradle", "xsl", "java", "groovy", "sh", "dtd", "xml", "yml", "html",
+                                       "vagrantfile", "properties", "yaml", "ts", "tsx"])
     }
 }

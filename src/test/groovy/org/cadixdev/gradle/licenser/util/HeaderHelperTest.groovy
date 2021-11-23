@@ -206,4 +206,24 @@ class HeaderHelperTest extends Specification {
         then:
         result
     }
+
+    def "contentStartsWithValidHeaderFormat returns true with valid header with shebang"() {
+        given:
+        def inputString = """\
+            #!groovy
+            /*
+             * Some copyright header
+             */
+            <document>
+            </document>
+        """.stripIndent()
+        def stringReader = new StringReader(inputString)
+        def reader = new BufferedReader(stringReader)
+
+        when:
+        def result = HeaderHelper.contentStartsWithValidHeaderFormat(reader, HeaderStyle.BLOCK_COMMENT.format)
+
+        then:
+        result
+    }
 }

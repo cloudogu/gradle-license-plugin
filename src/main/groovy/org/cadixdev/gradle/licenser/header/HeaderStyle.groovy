@@ -28,8 +28,8 @@ import javax.annotation.Nullable
 import java.util.regex.Pattern
 
 enum HeaderStyle {
-    BLOCK_COMMENT(~/^\s*\/\*(?:[^*].*)?$/, ~/\*\/\s*(.*?)$/, null, '/*', ' *', ' */',
-        'java', 'groovy', 'scala', 'kt', 'kts', 'gradle', 'css', 'js', 'Jenkinsfile'),
+    BLOCK_COMMENT(~/^\s*\/\*(?:[^*].*)?$/, ~/\*\/\s*(.*?)$/, ~/^\s*#!/, '/*', ' *', ' */',
+        'java', 'groovy', 'scala', 'kt', 'kts', 'gradle', 'css', 'js', 'jsx', 'ts', 'tsx', 'Jenkinsfile'),
     JAVADOC(~/^\s*\/\*\*(?:[^*].*)?$/, ~/\*\/\s*(.*?)$/, null, '/**', ' *', ' */'),
     HASH(~/^\s*#/, null, ~/^\s*#!/, '#', '#', '#',
             'properties', 'yml', 'yaml', 'sh', 'Dockerfile', 'Vagrantfile'),
