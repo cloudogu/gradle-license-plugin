@@ -10,7 +10,6 @@ plugins {
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-group = 'org.cadixdev.gradle'
 version = '0.6.1'
 description = 'A simple license header manager for Gradle'
 
@@ -71,23 +70,23 @@ task groovydocJar(type: Jar, dependsOn: groovydoc) {
 
 gradlePlugin {
     plugins {
-        licenserPlugin {
-            id = 'org.cadixdev.licenser'
+        licensePlugin {
+            id = 'org.scm-manager.license'
             implementationClass = 'org.cadixdev.gradle.licenser.Licenser'
         }
     }
 }
 
 pluginBundle {
-    website = 'https://www.cadixdev.org/'
-    vcsUrl = 'https://github.com/CadixDev/licenser'
+    website = 'https://cloudogu.com'
+    vcsUrl = 'https://github.com/cloudogu/gradle-license-plugin'
     description = project.description
     tags = ['license']
 
     plugins {
-        licenserPlugin {
-            id = 'org.cadixdev.licenser'
-            displayName = 'licenser'
+        licensePlugin {
+            id = 'org.scm-manager.license'
+            displayName = 'gradle-license-plugin'
         }
     }
 }

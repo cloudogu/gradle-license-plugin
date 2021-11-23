@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package org.cadixdev.gradle.licenser
+package dev.gradle.licenser
 
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
@@ -70,7 +70,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "settings.gradle") << ""
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
         """.stripIndent()
 
@@ -96,7 +96,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle") << """
             plugins {
                 id('java')
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -136,7 +136,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle") << """
             plugins {
                 id('java')
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -177,7 +177,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle") << """
             plugins {
                 id('java')
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -219,7 +219,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle") << """
             plugins {
                 id('java')
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -271,7 +271,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "settings.gradle") << ""
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
         """.stripIndent()
 
@@ -295,7 +295,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "settings.gradle") << ""
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
                 id('java')
             }
             sourceSets {
@@ -324,7 +324,7 @@ class LicenserPluginFunctionalTest extends Specification {
         def sourceFile = new File(sourcesDir, "source.c") << "TEST"
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -372,7 +372,7 @@ class LicenserPluginFunctionalTest extends Specification {
         def sourceFile = new File(sourcesDir, "Specialfile") << "TEST"
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             
             license {
@@ -415,7 +415,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "settings.gradle") << ""
         new File(projectDir, "build.gradle") << """
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
         """.stripIndent()
 
@@ -454,7 +454,7 @@ class LicenserPluginFunctionalTest extends Specification {
             }
 
             plugins {
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
             apply plugin: 'com.android.application'
             
@@ -495,7 +495,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle.kts") << """
             plugins {
                 java
-                id("org.cadixdev.licenser")
+                id("org.scm-manager.license")
             }
             
             license {
@@ -546,7 +546,7 @@ class LicenserPluginFunctionalTest extends Specification {
         new File(projectDir, "build.gradle") << """
             plugins {
                 id('java')
-                id('org.cadixdev.licenser')
+                id('org.scm-manager.license')
             }
 
             license {
