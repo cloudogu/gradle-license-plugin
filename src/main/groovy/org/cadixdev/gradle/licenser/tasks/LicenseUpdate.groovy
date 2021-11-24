@@ -67,7 +67,7 @@ abstract class LicenseUpdate extends LicenseTask {
 
                 try {
                     def prepared = prepareMatchingHeader(details, file)
-                    if (prepared == null) {
+                    if (prepared == null || prepared.check(file, charset.get(), skipExistingHeaders.get())) {
                         return
                     }
 
