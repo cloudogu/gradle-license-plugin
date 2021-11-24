@@ -2,7 +2,7 @@ plugins {
     id 'java-gradle-plugin'
     id 'groovy'
 
-    id 'com.gradle.plugin-publish' version '0.14.0'
+    id 'com.gradle.plugin-publish' version '0.12.0'
 
     id 'org.cadixdev.licenser' version '0.5.1'
 }
@@ -77,8 +77,8 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = 'https://cloudogu.com'
-    vcsUrl = 'https://github.com/cloudogu/gradle-license-plugin'
+    website = 'https://scm-manager.org'
+    vcsUrl = 'https://github.com/scm-manager/gradle-license-plugin'
     description = project.description
     tags = ['license']
 
