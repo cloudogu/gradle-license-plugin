@@ -84,7 +84,6 @@ pluginBundle {
 
     plugins {
         licensePlugin {
-            id = 'org.scm-manager.license'
             displayName = 'gradle-license-plugin'
         }
     }
