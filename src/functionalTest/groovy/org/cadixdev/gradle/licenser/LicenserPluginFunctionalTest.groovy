@@ -50,7 +50,6 @@ class LicenserPluginFunctionalTest extends Specification {
 
     static final def testMatrix = ([
             /* gradleVersion | androidVersion | extraArgs */
-            [ "5.6.4",         "3.6.4",         [] ],
             [ "6.8.3",         "4.1.0",         [] ],
     ] + configurationCacheTestMatrix).asImmutable()
 
