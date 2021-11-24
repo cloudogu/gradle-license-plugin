@@ -288,6 +288,89 @@ class LicenserPluginFunctionalTest extends Specification {
     }
 
     @Unroll
+    def "license format does not update valid files"() {
+        given:
+        def projectDir = temporaryFolder.newFolder()
+        new File(projectDir, "LICENSE.txt") << """
+            MIT License
+            
+            Copyright (c) 2020-present Cloudogu GmbH and Contributors
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy
+            of this software and associated documentation files (the "Software"), to deal
+            in the Software without restriction, including without limitation the rights
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+            copies of the Software, and to permit persons to whom the Software is
+            furnished to do so, subject to the following conditions:
+            
+            The above copyright notice and this permission notice shall be included in all
+            copies or substantial portions of the Software.
+            
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+            SOFTWARE.
+        """.stripIndent().trim()
+        new File(projectDir, "settings.gradle") << ""
+        new File(projectDir, "build.gradle") << """
+            /*
+             * MIT License
+             *
+             * Copyright (c) 2020-present Cloudogu GmbH and Contributors
+             *
+             * Permission is hereby granted, free of charge, to any person obtaining a copy
+             * of this software and associated documentation files (the "Software"), to deal
+             * in the Software without restriction, including without limitation the rights
+             * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+             * copies of the Software, and to permit persons to whom the Software is
+             * furnished to do so, subject to the following conditions:
+             *
+             * The above copyright notice and this permission notice shall be included in all
+             * copies or substantial portions of the Software.
+             *
+             * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+             * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+             * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+             * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+             * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+             * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+             * SOFTWARE.
+             */
+            
+            
+            plugins {
+                id('org.scm-manager.license')
+            }
+            
+            license {
+                header = project.file("LICENSE.txt")
+                ignoreNewLine = true
+                newLine = true
+                tasks {
+                    build {
+                        files.from("build.gradle")
+                    }
+                }
+            }
+        """.stripIndent().trim()
+
+        when:
+        def result = runner(projectDir, gradleVersion, extraArgs + "licenseFormat").build()
+
+        then:
+        result.output.contains("Task :updateLicenses UP-TO-DATE")
+        result.output.contains("Task :licenseFormat UP-TO-DATE")
+        result.task(":updateLicenses").outcome == TaskOutcome.UP_TO_DATE
+        result.task(":licenseFormat").outcome == TaskOutcome.UP_TO_DATE
+
+        where:
+        [gradleVersion, _, extraArgs] << testMatrix
+    }
+
+    @Unroll
     def "supports custom source sets task (gradle #gradleVersion)"() {
         given:
         def projectDir = temporaryFolder.newFolder()
