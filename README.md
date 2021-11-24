@@ -1,6 +1,8 @@
 # licenser
 licenser is a simple license header manager for Gradle. It can automatically ensure that the source files contain a predefined license header and optionally generate them automatically using a Gradle task. It provides several options as configuration (e.g. variables in the license header, included file types, style of license header) so it can be customized for each project.
 
+This is a fork of the wonderful [CadixDev/licenser](https://github.com/CadixDev/licenser) plugin.
+
 ## Features
 - Apply pre-defined license header in a file to the source files of the source sets or any other set of files (configurable)
 - Variable substitution in the license header file
