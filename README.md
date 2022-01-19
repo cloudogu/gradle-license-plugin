@@ -15,7 +15,7 @@ For a simple project you only need to apply the licenser plugin to your project:
 
 ```gradle
 plugins {
-    id 'org.cadixdev.licenser' version '0.6.1'
+    id 'org.scm-manager.license' version '0.7.1'
 }
 ```
 
